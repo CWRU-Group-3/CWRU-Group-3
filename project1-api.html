@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+  <head>
+
+    <meta charset="UTF-8">
+    <title>Group Project</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <!-- <script src="http://momentjs.com/downloads/moment.js"></script>   -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    
+     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+  </head>
+
+  <body>
+
+    
+    <form id="input-form">
+      <label id="text-box" for="topic-input">Country Search</label>
+      <input type="text" id="country-input"><br>
+
+      <!-- Button triggers new buttons to appear -->
+        <input id="search-button" class="btn btn-sm new-button" type="search" value="Search">
+    </form>
+
+  <div id="button-container"></div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"> 
+</script>
+<script type="text/javascript">
+
+  // var countriesArr = [];
+
+
+  function search() {
+    clearDiv();
+    var countrySearch = $("#country-input").val().trim();
+    var queryUrl = "http://api.geonames.org/searchJSON?q=" + countrySearch + "&maxRows=10&cities10000&fclName=city&username=ldillon16";
+    console.log("QI: " + queryUrl)
+
+     $.ajax({
+      url: queryUrl,
+      method: "GET"
+    }).then(function(response) {
+       console.log(response.geonames)
+        for (i=0; i<response.geonames.length; i++) {
+          var name = response.geonames[i].name;
+          console.log("CITY NAME " + name)
+          if ((response.geonames[i].fclName === "city, village,...") 
+           && (response.geonames[i].countryName = countrySearch)) {
+
+          //   for (j=0; j<3; j++) {
+          //   var countriesArr = [];
+          // countriesArr.push(name);
+          // console.log("CA" + countriesArr[j]) 
+
+           var newButton = $("<button>").attr("value", name).text(name)
+           $("#button-container").append(newButton)
+    }
+    // if (response.geonames[i].countryName != countrySearch) {
+    //   alert("please type a country")
+    // }
+  }
+})
+  }
+    function clearDiv(){
+      $("#button-container").empty();
+    }
+
+
+    // button creation
+    // function renderButtons() {
+    //   $("#button-container").empty();
+
+    //   for (i=0; i<topics.length; i++) {
+    //     var x = $("<button>");
+    //     x.addClass("topic btn btn-lg")
+    //     .attr("data-name", topics[i])
+    //     .text(topics[i]);
+    //     $("#button-container").append(x);
+    //   }
+    //  }
+
+  //check if it has country code, if it doesnt then don't post it
+
+  //make a dropdown box with every country, when they select a country it displays country name, but it actually searches by country code 
+  //find each country's code in json format, and code it thru jquery so that when they select a country it puts that code into the queryURl
+
+  // function renderButtons() {
+
+  //   // var countrySearch = $(this).attr("data-name");
+  //   var countrySearch = $("#country-input").val().trim();
+  //   var queryUrl = "http://api.geonames.org/searchJSON?q=" + countrySearch + "&maxRows=10&fclName=city&username=ldillon16";
+  //   console.log("QI: " + queryUrl)
+
+  //   $.ajax({
+  //     url: queryUrl,
+  //     method: "GET"
+  //   }).then(function(response) {
+       
+  //     // var results = response.data;
+  //     console.log(response)
+  //       for (i=0; i<response.length; i++) {
+  //         var buttonDiv = $("<div class='buttons'>");
+  //         var newButtons = $("<button>");
+  //         var city = response[i].toponymName;
+  //         console.log("CITY: " + city);
+  //         newButtons.text(city).attr("value", "city");
+  //         buttonDiv.append(newButtons);
+  //         $("#button-container").append(buttonDiv);
+  //       }
+       
+  //   }); 
+  // }
+
+
+
+   $(document).on("click", "#search-button", search);
+   // console.log(renderButtons)
+
+
+  </script>
+</body>
+</html>
+  
