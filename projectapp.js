@@ -4,8 +4,10 @@ var list = "search"
 var pageid = "";
 
 $(document).on("click",".city-button", function(){
+    title = $(this).attr("value").trim();
     var path = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch="+title;
-    title = $(this).val().trim();
+    
+    console.log(title)
     $.ajax({
         url: path,
         data: {
@@ -15,17 +17,19 @@ $(document).on("click",".city-button", function(){
     }).done( function ( data ) {
         console.log(data)
         pageid = data.query.search[0].pageid;
-    var parse = "https://en.wikipedia.org/w/api.php?action=parse&pageid="+pageid+"&prop=images";
+    var query = "https://en.wikipedia.org/w/api.php?action=query&titles="+title+"&prop=pageimages";
     $.ajax({
-        url:parse,
+        url:query,
         data:{
             format:'json'
         },
         dataType:'jsonp'
     }).done(function(response){
         console.log(response)
-        var newImage = $("<img>").attr("src",response.images[1])
-        $("#description").append(newImages)
+        var string = "response.query.pages."+pageid+".thumbnail.source"
+        
+        var newImage = $("<img>").attr("src", response.query.pages[pageid].thumbnail.source);
+        $("#description").append(newImage)
     })
     } );
 })
