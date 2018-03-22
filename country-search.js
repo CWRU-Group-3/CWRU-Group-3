@@ -24,6 +24,7 @@
 
            var newButton = $("<button>").attr("value", countriesArr[j]).text(countriesArr[j]);
            newButton.attr("class", "city");
+           newButton.addClass("city-button");
            $("#button-container").append(newButton);
     } 
     // if (response.geonames[i].countryName != countrySearch) {
