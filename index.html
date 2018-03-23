@@ -55,7 +55,7 @@
                 <div class="row">
                     <div class="col">
                         <div id="description">
-=======
+
             <div class="col">
 
 
@@ -150,9 +150,119 @@
     <script src="./projectapp.js"></script>
     <script src="country-search.js"></script>
     <script src="youtube.js"></script>
+                            
+        <script>
+        
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCseTcopxbliDR4FkwYeEsDfe3lAiQNSFI",
+    authDomain: "project1-a3685.firebaseapp.com",
+    databaseURL: "https://project1-a3685.firebaseio.com",
+    projectId: "project1-a3685",
+    storageBucket: "project1-a3685.appspot.com",
+    messagingSenderId: "72500934397"
+  };
+  firebase.initializeApp(config);
+  
+    // Create a variable to reference the database
+    var database = firebase.database();
+    var country = "";
 
+  function dataFire(){
+    event.preventDefault();
+      
+    var countrySearch = $("#country-input").val().trim();
+    console.log("RRRR" + countrySearch);
+
+    // send new data to firebase
+    database.ref().push({
+        country: countrySearch,
+    });
+  };
+    
+    // snapshot of child_added, we will use these figures for our calculations/data manipulation
+    database.ref().on("child_added", function(snapshot){
+      var newCountry = snapshot.val().country
+      console.log("COUNTRY" + newCountry)
+      var newCity = snapshot.val().city
+
+
+    var newTable = $("<table>").addClass("table")
+    var newRow = $("<tr>");
+    newRow.append($("<td>").text(snapshot.val().country))
+    .append($("<td>").text(snapshot.val().city))
+      
+    $("#tbody").append(newRow); 
+})
+
+
+ var countriesArr = [];
+
+  function search() {
+    clearDiv();
+    var countrySearch = $("#country-input").val().trim();
+    var queryUrl = "http://api.geonames.org/searchJSON?q=" + countrySearch + "&maxRows=20&cities15000&continentCode=EU&fclName=city&username=ldillon16";
+    console.log("QI: " + queryUrl)
+
+     $.ajax({
+      url: queryUrl,
+      method: "GET"
+    }).then(function(response) {
+       console.log(response.geonames)
+        for (i=0; i<response.geonames.length; i++) {
+          var name = response.geonames[i].name;
+          console.log("CITY NAME " + name)
+          if ((response.geonames[i].fclName === "city, village,...") 
+           && (response.geonames[i].countryName = countrySearch)) {
+            countriesArr.push(name)
+            console.log("CA" + countriesArr) } }
+
+           for (j=0; j<3; j++) {
+
+           var newButton = $("<button>").attr("value", countriesArr[j]).text(countriesArr[j]).addClass("city-button btn-primary");
+           $("#button-container").append(newButton);
+           } 
+    
+    // if (response.geonames[i].countryName != countrySearch) {
+    //   alert("please type a country")
+    // }
+  
+      })
+    }
+
+    function clearDiv(){
+      $("#button-container").empty();
+    }
+
+    function clearSearch(){
+      $("#country-input").empty();
+      countriesArr = [];
+    }
+
+   $(document).on("click", "#search-button", function(){
+    dataFire();
+    search();
+    clearSearch();
+   });
+
+    // var database = firebase.database();
+    // var country = "";
+
+    $(".button-container").on("click", function(){
+        console.log("clack");
+      // event.preventDefault();
+      //   var cityClick = $(this).attr("value");
+     
+      // console.log("SSSS" + cityClick)
+
+    //   database.ref().push({
+    //     city: cityClick,
+    // });
+
+     });
+
+
+  
+    </script>
 </body>
-
 </html>
-
-
