@@ -1,49 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel='stylesheet' type='text/css' href='style-mckenzie.css'>
+
     <title>Document</title>
+
 </head>
+
 <body>
     <div class="container">
+
+
+
+        <!-- for video pop up -->
+        <div id="output"></div>
+        <div class="overlayBg"></div>
+        <div class="popup">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/WEkSYw3o5is" rel="0" frameborder="0" allow="autoplay; encrypted-media"
+                allowfullscreen></iframe>
+        </div>
+
+        <!-- ************** -->
+
+
+        
         <div class="row">
-            <div class="col">
+
+            <div class="col-lg-10">
+                <h1> Explore Europe! </h1>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-lg-10">
 
                     <form id="input-form">
                             <label id="text-box" form="topic-input">Country Search</label>
-                            <input type="text" id="country-input"><br>
+                            <input type="text" id="country-input" onfocus="this.value=''" value="Search for a European Country><br>
                        
                             <!-- Button triggers new buttons to appear -->
-                              <input id="search-button" class="btn btn-sm new-button" type="search" value="Search">
+                              <input id="search-button" class="btn btn-primary new-button" type="button" value="Search">Search>
                           </form>
                        
                         <div id="button-container"></div>
 
             </div>
         <div class="row">
-            <div class="col-10">
+            <div class="col-lg-10">
                 <div class="row">
                     <div class="col">
                         <div id="description">
 
-                        </div>
-                        <div class="row">
-                            <div class="col-6" id="Matts-div">
+            <div class="col">
+
+
+                <form id="input-form">
+                    <label id="text-box" form="topic-input">Country Search</label>
+                    <input type="text" id="country-input">
+                    <br>
+
+                    <!-- Button triggers new buttons to appear -->
+                    <input id="search-button" class="btn btn-sm new-button" type="search" value="Search">
+                </form>
+
+                <div id="button-container"></div>
+
+            </div>
+            <div class="row">
+                <div class="col-10">
+                    <div class="row">
+                        <div class="col-12">
+                            <div id="description">
+
                             </div>
-                            <div class="col-6" id="mckenzies-div">
-                                
+                            <div class="row">
+                                <div class="col-6" id="Matts-div">
+                                    <h2> Picture of the City</h2>
+
+                                </div>
+                                <div class="col-6">
+                                    <h2> Video tour of City</h2>
+                                    <div id="mckenzies-div">
+
+                                        <div id="output"></div>
+                                        <div class="overlayBg"></div>
+                                        <div class="popup">
+                                            
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div id="sidebar weather-forecast" class="col-2">
+                <div id="sidebar weather-forecast" class="col-2">
 
+                </div>
             </div>
         </div>
-        </div>    
+
+        <div class="row">
+            <div id="searches" class="col"></div>
+        </div>
+    </div>
+        <div class="container">
+        <div class="row">
+            <div class="col-lg-10">
+                 <div class="panel">
+            <div class="panel-heading">
+              <h3 class="panel-title"><strong>Search History</strong></h3>
+            </div>
+            <div class="panel-body">
+              <table class="table table-hover" id='search-table'>
+                <thead>
+                  <tr>
+                    <th>Country</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tr>
+                  <tbody id="tbody"></tbody>
+                </tr>
+              </table>
+            </div>
+        </div>
+    </div>                                   
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./projectapp.js"></script>
+    <script src="./country-search.js"></script>
+</body>
+</html>
             
         <div class="row">
             <div id="searches" class="col"></div>
@@ -52,7 +151,123 @@
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simply_valid@3.2.1/main/index.js"></script>
     <script src="./projectapp.js"></script>
     <script src="country-search.js"></script>
+    <script src="youtube.js"></script>
+                            
+        <script>
+        
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCseTcopxbliDR4FkwYeEsDfe3lAiQNSFI",
+    authDomain: "project1-a3685.firebaseapp.com",
+    databaseURL: "https://project1-a3685.firebaseio.com",
+    projectId: "project1-a3685",
+    storageBucket: "project1-a3685.appspot.com",
+    messagingSenderId: "72500934397"
+  };
+  firebase.initializeApp(config);
+  
+    // Create a variable to reference the database
+    var database = firebase.database();
+    var country = "";
+
+  function dataFire(){
+    event.preventDefault();
+      
+    var countrySearch = $("#country-input").val().trim();
+    console.log("RRRR" + countrySearch);
+
+    // send new data to firebase
+    database.ref().push({
+        country: countrySearch,
+    });
+  };
+    
+    // snapshot of child_added, we will use these figures for our calculations/data manipulation
+    database.ref().on("child_added", function(snapshot){
+      var newCountry = snapshot.val().country
+      console.log("COUNTRY" + newCountry)
+      var newCity = snapshot.val().city
+
+
+    var newTable = $("<table>").addClass("table")
+    var newRow = $("<tr>");
+    newRow.append($("<td>").text(snapshot.val().country))
+    .append($("<td>").text(snapshot.val().city))
+      
+    $("#tbody").append(newRow); 
+})
+
+
+ var countriesArr = [];
+
+  function search() {
+    clearDiv();
+    var countrySearch = $("#country-input").val().trim();
+    var queryUrl = "http://api.geonames.org/searchJSON?q=" + countrySearch + "&maxRows=20&cities15000&continentCode=EU&fclName=city&username=ldillon16";
+    console.log("QI: " + queryUrl)
+
+     $.ajax({
+      url: queryUrl,
+      method: "GET"
+    }).then(function(response) {
+       console.log(response.geonames)
+        for (i=0; i<response.geonames.length; i++) {
+          var name = response.geonames[i].name;
+          console.log("CITY NAME " + name)
+          if ((response.geonames[i].fclName === "city, village,...") 
+           && (response.geonames[i].countryName = countrySearch)) {
+            countriesArr.push(name)
+            console.log("CA" + countriesArr) } }
+
+           for (j=0; j<3; j++) {
+
+           var newButton = $("<button>").attr("value", countriesArr[j]).text(countriesArr[j]).addClass("city-button btn-primary");
+           $("#button-container").append(newButton);
+           } 
+    
+    // if (response.geonames[i].countryName != countrySearch) {
+    //   alert("please type a country")
+    // }
+  
+      })
+    }
+
+    function clearDiv(){
+      $("#button-container").empty();
+    }
+
+    function clearSearch(){
+      $("#country-input").empty();
+      countriesArr = [];
+    }
+
+   $(document).on("click", "#search-button", function(){
+    dataFire();
+    search();
+    clearSearch();
+   });
+
+    // var database = firebase.database();
+    // var country = "";
+
+    $(".button-container").on("click", function(){
+        console.log("clack");
+      // event.preventDefault();
+      //   var cityClick = $(this).attr("value");
+     
+      // console.log("SSSS" + cityClick)
+
+    //   database.ref().push({
+    //     city: cityClick,
+    // });
+
+     });
+
+
+  
+    </script>
 </body>
 </html>
