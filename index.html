@@ -1,15 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="style.css"> -->
+
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel='stylesheet' type='text/css' href='style-mckenzie.css'>
+
     <title>Document</title>
+
 </head>
+
 <body>
     <div class="container">
+
+
+        <!-- for video pop up -->
+        <div id="output"></div>
+        <div class="overlayBg"></div>
+        <div class="popup">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/WEkSYw3o5is" rel="0" frameborder="0" allow="autoplay; encrypted-media"
+                allowfullscreen></iframe>
+        </div>
+
+        <!-- ************** -->
         <div class="row">
+
             <div class="col-lg-10">
                 <h1> Explore Europe! </h1>
             </div>
@@ -36,25 +55,56 @@
                 <div class="row">
                     <div class="col">
                         <div id="description">
+=======
+            <div class="col">
 
-                        </div>
-                        <div class="row">
-                            <div class="col-6">
+
+                <form id="input-form">
+                    <label id="text-box" form="topic-input">Country Search</label>
+                    <input type="text" id="country-input">
+                    <br>
+
+                    <!-- Button triggers new buttons to appear -->
+                    <input id="search-button" class="btn btn-sm new-button" type="search" value="Search">
+                </form>
+
+                <div id="button-container"></div>
+
+            </div>
+            <div class="row">
+                <div class="col-10">
+                    <div class="row">
+                        <div class="col-12">
+                            <div id="description">
 
                             </div>
-                            <div class="col-6">
-                                
+                            <div class="row">
+                                <div class="col-6" id="Matts-div">
+                                    <h2> Picture of the City</h2>
+
+                                </div>
+                                <div class="col-6">
+                                    <h2> Video tour of City</h2>
+                                    <div id="mckenzies-div">
+
+                                        <div id="output"></div>
+                                        <div class="overlayBg"></div>
+                                        <div class="popup">
+                                            
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div id="sidebar weather-forecast" class="col-2">
+                <div id="sidebar weather-forecast" class="col-2">
 
+                </div>
             </div>
         </div>
-        </div>    
-            
+
         <div class="row">
             <div id="searches" class="col"></div>
         </div>
@@ -98,5 +148,11 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./projectapp.js"></script>
+    <script src="country-search.js"></script>
+    <script src="youtube.js"></script>
+
 </body>
+
 </html>
+
+
