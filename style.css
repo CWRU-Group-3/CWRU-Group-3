@@ -1,6 +1,6 @@
-h1 {
+nav {
   text-align: center;
-  background-color: blueviolet;
+  width: 900px;
 }
 
 .city-button {
@@ -9,18 +9,57 @@ h1 {
 }
 
 body{
-  background-image: url("background.jpg");
-  opacity: .2;
-  
-  
+  background: linear-gradient(to bottom right, ghostwhite, lightgrey);
+  font-family: "raleway";
 }
 
 
-.container{
-  background-color: #ecf3f5e6;
+#pic{
+  
+  background-color:rgba(136, 132, 132, 0.9);
+  opacity: 0.5;
+  filter: alpha(opacity=50);
 }
 
-#title1{
-  background-color:blue;
-  width: 100%;
+.grey-back{
+  background: #b3b3ff;
+  text-align: center;
+  width: 1500px;
+  text-align: center;
+  height: 100px;
+  box-shadow: 4px 3px 2px darkblue;
+	border-radius: 4px;
+
+}
+
+#title1 {
+	text-align: center;
+	font-weight: bold;
+	color: white;
+	text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+	font-size: 300%;
+
+}
+
+#search-button {
+	background: #99d6ff;
+	border-color: #99d6ff;
+	box-shadow: 4px 3px 2px grey;
+}
+
+.city-button {
+	background: #0000b3;
+	border-color: #0000b3;
+	color: ghostwhite;
+	box-shadow: 2px 2px 1px grey;
+}
+.card-header{
+  background:beige;
+}
+.card{
+  background-color:#ececf9;
+  
+}
+.list-group-item{
+  background-color:#dbdbf8;
 }
