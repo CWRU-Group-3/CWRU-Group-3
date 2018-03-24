@@ -2,7 +2,29 @@
 var title="";
 var list = "search"
 var pageid = "";
+var deleteText = function(string, target){
+    while(string.includes(target)){
+        string =  string.replace(target,"")
+    }
+    return string;
+}
 var textGrab = function(index,pageid){
+    if(index==-1){
+       
+        $.ajax({
+            url: "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=colombes",
+            data: {
+                format: 'json'
+            },
+            dataType: 'jsonp'
+        }).then(function(response){
+            var newContent = $("<div>")
+            
+            newContent.text(response.query.pages[pageid].extract)
+            
+            $("#description").empty().append(newContent);
+        })
+    }
     $.ajax({
         url: "https://en.wikipedia.org/w/api.php?action=parse&pageid="+pageid+"&section="+index+"&prop=text",
         data: {
@@ -11,7 +33,12 @@ var textGrab = function(index,pageid){
         dataType: 'jsonp'
     }).then(function(response){
         var newContent = $("<div>")
-        newContent.html(response.parse.text["*"])
+        var wikitext = response.parse.text["*"] 
+        wikitext = deleteText(wikitext,"[")
+        wikitext = deleteText(wikitext, "edit")
+        wikitext = deleteText(wikitext, "]")
+        newContent.html(wikitext)
+        
         $("#description").empty().append(newContent);
     })
 }
@@ -24,9 +51,34 @@ var picGrab = function(title, pageid){
         },
         dataType: 'jsonp'
     }).then(function(response){
-        var newImage = $("<img>").attr("src", response.query.pages[pageid].thumbnail.source).attr("style","width: 200px; height: 200px");
+        var pixel = response.query.pages[pageid].thumbnail.width;
+        pixel = pixel+"px";
+        var src = response.query.pages[pageid].thumbnail.source;
+        src = src.replace(pixel,"275px")
+        var newImage = $("<img>").attr("src", src).attr("alt", src.replace("275px","270px"));
         $("#Matts-div").empty().append(newImage)
     })
+}
+var getIndex = function(response){
+    var index = -1;
+    var arr = response.parse.sections 
+    for(var i =0; i<arr.length; i++){
+        var head = response.parse.sections[i].line
+        if(head=="Monuments and attractions" || head=="Tourism and attractions"){
+            
+            index = i+1;
+            console.log("section heading check works")
+            return index;
+        }
+    }
+    for(var i=0; i<arr.length; i++){
+        var head = response.parse.sections[i].line
+        if(head=="Culture"|| head=="Landmarks"){
+            index = i+1;
+            return index;
+        }
+    }
+    return index;
 }
 $(document).on("click",".city-button", function(){
     title = $(this).attr("value").trim();
@@ -54,16 +106,8 @@ $(document).on("click",".city-button", function(){
         dataType:'jsonp'
     }).done(function(response){
         console.log(response)
-        
-        var index = -1;
-        var arr = response.parse.sections
-        for(var i =0; i<arr.length; i++){
-            if(response.parse.sections[i].line=="Monuments and attractions" || response.parse.sections[i].line=="Tourism and attractions"){
-                
-                index = i+1;
-                console.log("section heading check works")
-            }
-        }
+        var index = getIndex(response);
+       
         console.log(index)
         textGrab(index,pageid)
         picGrab(title, pageid)
