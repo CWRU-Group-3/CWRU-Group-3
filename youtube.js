@@ -1,5 +1,6 @@
 
 var pageToken = {};
+console.log("JS FILE LOADED")
 $(document).ready(function () {
   $('.popup').hide()
   $('.overlayBg').hide()
@@ -21,7 +22,7 @@ $(document).ready(function () {
 
 var $main = $("body");
 
-$main.on('click', '.city', function () {
+$main.on('click', '.city-button', function () {
   var searchValue = $(this).val() + " tour of city";
   searchYoutube(searchValue)
   console.log("button worked")
