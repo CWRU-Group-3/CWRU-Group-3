@@ -8,11 +8,11 @@ var deleteText = function(string, target){
     }
     return string;
 }
-var textGrab = function(index,pageid){
+var textGrab = function(index,pageid,title){
     if(index==-1){
        
         $.ajax({
-            url: "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=colombes",
+            url: "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles="+title,
             data: {
                 format: 'json'
             },
@@ -74,7 +74,7 @@ var getIndex = function(response){
     }
     for(var i=0; i<arr.length; i++){
         var head = response.parse.sections[i].line
-        if(head=="Culture"|| head=="Landmarks"){
+        if(head=="Landmarks"){
             index = i+1;
             return index;
         }
@@ -110,7 +110,7 @@ $(document).on("click",".city-button", function(){
         var index = getIndex(response);
        
         console.log(index)
-        textGrab(index,pageid)
+        textGrab(index,pageid,title)
         picGrab(title, pageid)
         
     })
