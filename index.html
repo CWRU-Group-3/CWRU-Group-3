@@ -117,7 +117,7 @@
                 <thead>
                   <tr>
                     <th>Country</th>
-                    <th></th>
+                    <th>City</th>
                     <th></th>
                   </tr>
                 </thead>
@@ -187,10 +187,11 @@
 
     var newRow = $("<tr>");
     var newSect = $("<td>");
+    var newSect2 = $("<td>");
 
-    newSect.text(snapshot.val().country)
-    newSect.text(snapshot.val().city)
-    newRow.append(newSect);
+    newSect.append($("<span>").text(snapshot.val().country))
+    newSect2.append($("<span>").text(snapshot.val().city))
+    newRow.append(newSect).append(newSect2);
 
     $("tbody").append(newRow);  
 })
