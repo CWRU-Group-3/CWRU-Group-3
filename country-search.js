@@ -6,19 +6,21 @@ function search() {
   clearSearch();
   var countrySearch = $("#country-input").val().trim();
 
-  const validate1 = simplyValid.default({
-    schema: 'noNumbers'
-  });
-  const validate2 = simplyValid.default({
-    schema: 'noSpecials'
-  });
-  var validation1 = validate1(countrySearch).isValid;
-  var validation2 = validate2(countrySearch).isValid;
+  // const validate1 = simplyValid({
+  //  schema: 'noNumbers'
+  // });
+  // const validate2 = simplyValid({
+   // schema: 'noSpecials'
+  //});
+ // console.log(validate1)
+  //var validation1 = validate1(countrySearch).isValid;
+  //var validation2 = validate2(countrySearch).isValid;
 
-  if (validation1 === false || validation2 === false){
-    alert('Please enter a valid country with no numbers or special characters')
-    return
-  }
+
+  //if (validation1 === false || validation2 === false){
+    //alert('Please enter a valid country with no numbers or special characters')
+    //return
+  //}
 
 
   var queryUrl = "http://api.geonames.org/searchJSON?q=" + countrySearch + "&maxRows=20&cities10000&continentCode=EU&fclName=city&username=ldillon16";
@@ -54,18 +56,10 @@ function search() {
 }
 function clearDiv() {
   $("#button-container").empty();
+
+  if (validation1 === false || validation2 === false){
+    alert('Please enter a valid country with no numbers or special characters')
+    return
+  }
+
 }
-
-function clearSearch() {
-  $("#country-input").empty();
-  countriesArr = [];
-}
-
-
-// $(document).on("click", "#search-button", clearDiv);
-
-$(document).on("click", "#search-button", function () {
-  search();
-  clearSearch();
-});
-
