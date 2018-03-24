@@ -76,7 +76,7 @@
                 </div>
             </div>
 
-            <div class='col-md-3'>
+            <div class='col-md-3' id="weather">
                 <br>
                 <!-- Weather Side Bar -->
                 <div id="sidebar weather-forecast">
@@ -157,7 +157,7 @@
     <script>
 
     function openPage() {
-        $(".weather").hide();
+        $("#weather").hide();
         $(".video-div").hide();
     }
     openPage();
@@ -211,7 +211,7 @@
             newSect2.append($("<span>").text(snapshot.val().city))
             newRow.append(newSect).append(newSect2);
 
-            $("tbody").append(newRow);
+            $("#tbody").append(newRow);
         })
 
         var countriesArr = [];
