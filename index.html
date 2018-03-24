@@ -140,13 +140,9 @@
     <script src="country-search.js"></script>
     <script src="youtube.js"></script>
     <script src="project1.js"></script>
-
+                        
     
-
-            
-        
-                            
-        <script>
+    <script>
         
   // Initialize Firebase
   var config = {
@@ -163,7 +159,7 @@
     var database = firebase.database();
     var country = "";
 
-  function dataFire(){
+ function dataFire(){
     event.preventDefault();
       
     var countrySearch = $("#country-input").val().trim();
@@ -173,6 +169,18 @@
         country: countrySearch,
     });
   };
+    var database = firebase.database();
+    var country = "";
+    $(document).on("click", ".city-button", function(){
+        
+      event.preventDefault();
+      var cityClick = $(this).attr("value");
+
+      database.ref().push({
+         city: cityClick,
+     });
+
+     });
     
   // snapshot of child_added, we will use these figures for our calculations/data manipulation
   database.ref().on("child_added", function(snapshot){
