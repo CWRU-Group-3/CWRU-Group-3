@@ -1,5 +1,6 @@
 h1 {
   text-align: center;
+  background-color: blueviolet;
 }
 
 .city-button {
@@ -9,15 +10,17 @@ h1 {
 
 body{
   background-image: url("background.jpg");
+  opacity: .2;
   
   
 }
 
 
 .container{
-  background-color: rgba(136, 132, 132, 0.9);
+  background-color: #ecf3f5e6;
 }
 
 #title1{
-  background-color: rgba(136, 132, 132, 0.9);
+  background-color:blue;
+  width: 100%;
 }
