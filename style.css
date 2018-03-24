@@ -6,3 +6,18 @@ h1 {
   margin: 10px;
   border-radius: 3px;
 }
+
+body{
+  background-image: url("background.jpg");
+  
+  
+}
+
+
+.container{
+  background-color: rgba(136, 132, 132, 0.9);
+}
+
+#title1{
+  background-color: rgba(136, 132, 132, 0.9);
+}
