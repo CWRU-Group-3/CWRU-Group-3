@@ -167,7 +167,6 @@
     event.preventDefault();
       
     var countrySearch = $("#country-input").val().trim();
-    console.log("RRRR" + countrySearch);
 
     // send new data to firebase
     database.ref().push({
@@ -175,19 +174,22 @@
     });
   };
     
-    // snapshot of child_added, we will use these figures for our calculations/data manipulation
-    database.ref().on("child_added", function(snapshot){
-      var newCountry = snapshot.val().country
-      console.log("COUNTRY" + newCountry)
-      var newCity = snapshot.val().city
-
-
+  // snapshot of child_added, we will use these figures for our calculations/data manipulation
+  database.ref().on("child_added", function(snapshot){
+    var newCountry = snapshot.val().country
+    var newCity = snapshot.val().city
+      
     var newTable = $("<table>").addClass("table")
     var newRow = $("<tr>");
-    newRow.append($("<td>").text(snapshot.val().country))
-    .append($("<td>").text(snapshot.val().city))
-      
-    $("#tbody").append(newRow); 
+    var newSect = $("<td>");
+    var newSect2 = $("<td>");
+
+    newRow.append(newSect);
+    newRow.append(newSect2)
+    newSect.append($("<span>").text(snapshot.val().country))
+    newSect2.append($("<span>").text(snapshot.val().city))
+    newRow.append(newSect).append(newSect2);
+    $("#tbody").append(newRow);  
 })
 
 
