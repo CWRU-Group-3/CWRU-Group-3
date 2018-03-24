@@ -8,18 +8,18 @@ var deleteText = function(string, target){
     }
     return string;
 }
-var textGrab = function(index,pageid){
+var textGrab = function(index,pageid,title){
     if(index==-1){
        
         $.ajax({
-            url: "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=colombes",
+            url: "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles="+title,
             data: {
                 format: 'json'
             },
             dataType: 'jsonp'
         }).then(function(response){
             var newContent = $("<div>")
-            
+            newContent.addClass("text-edit")
             newContent.text(response.query.pages[pageid].extract)
             
             $("#description").empty().append(newContent);
@@ -38,7 +38,7 @@ var textGrab = function(index,pageid){
         wikitext = deleteText(wikitext, "edit")
         wikitext = deleteText(wikitext, "]")
         newContent.html(wikitext)
-        
+        newContent.addClass("text-edit")
         $("#description").empty().append(newContent);
     })
 }
@@ -56,6 +56,7 @@ var picGrab = function(title, pageid){
         var src = response.query.pages[pageid].thumbnail.source;
         src = src.replace(pixel,"275px")
         var newImage = $("<img>").attr("src", src).attr("alt", src.replace("275px","270px"));
+        newImage.addClass("image-edit")
         $("#Matts-div").empty().append(newImage)
     })
 }
@@ -109,7 +110,7 @@ $(document).on("click",".city-button", function(){
         var index = getIndex(response);
        
         console.log(index)
-        textGrab(index,pageid)
+        textGrab(index,pageid,title)
         picGrab(title, pageid)
         
     })
