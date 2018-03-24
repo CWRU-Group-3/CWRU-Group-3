@@ -26,9 +26,12 @@ $("#search-button").click(function (event) {
         var byCity = $(".city-button").val();
         console.log(queryURL);
         console.log(response);
+        var tempFa=response.main.temp;
+tempFa=1.8*(tempFa-273) +32;
+tempFa=tempFa.toFixed(2);
         $("#_weather").text(response.name + " " + "weather details");
         $("#_clouds").text("description: " + response.weather[0].description);
-        $("#_temperature").text("Temperature (F) " + response.main.temp);
+        $("#_temperature").text("Temperature (F) " + tempFa);
         $("#_humidity").text("Humidity: " + response.main.humidity);
         $("#_wind").text("Wind Speed: " + response.wind.speed);
         
@@ -46,9 +49,12 @@ $("body").on("click", ".city-button", function () {
         var byCity = $(".city-button").val();
         console.log(queryURL);
         console.log(response);
+        var tempFa=response.main.temp;
+tempFa=1.8*(tempFa-273) +32;
+tempFa=tempFa.toFixed(2);
         $("#_weather").text(response.name + " " + "weather details");
         $("#_clouds").text("description: " + response.weather[0].description);
-        $("#_temperature").text("Temperature (F) " + response.main.temp);
+        $("#_temperature").text("Temperature (F) " + tempFa);
         $("#_humidity").text("Humidity: " + response.main.humidity);
         $("#_wind").text("Wind Speed: " + response.wind.speed);
     });
