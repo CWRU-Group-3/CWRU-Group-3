@@ -219,11 +219,6 @@
            var newButton = $("<button>").attr("value", countriesArr[j]).text(countriesArr[j]).addClass("city-button btn-primary");
            $("#button-container").append(newButton);
            } 
-    
-    // if (response.geonames[i].countryName != countrySearch) {
-    //   alert("please type a country")
-    // }
-  
       })
     }
 
@@ -242,24 +237,7 @@
     clearSearch();
    });
 
-    // var database = firebase.database();
-    // var country = "";
 
-    $(".button-container").on("click", function(){
-        console.log("clack");
-      // event.preventDefault();
-      //   var cityClick = $(this).attr("value");
-     
-      // console.log("SSSS" + cityClick)
-
-    //   database.ref().push({
-    //     city: cityClick,
-    // });
-
-     });
-
-
-  
     </script>
 </body>
 </html>
