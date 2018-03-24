@@ -158,10 +158,18 @@
     // Create a variable to reference the database
     var database = firebase.database();
     var country = "";
+<<<<<<< HEAD
+=======
+
+>>>>>>> 022b94aac13f25221405b4a26328d1e74ddb8a91
  function dataFire(){
     event.preventDefault();
       
     var countrySearch = $("#country-input").val().trim();
+<<<<<<< HEAD
+=======
+
+>>>>>>> 022b94aac13f25221405b4a26328d1e74ddb8a91
     // send new data to firebase
     database.ref().push({
         country: countrySearch,
@@ -173,9 +181,17 @@
         
       event.preventDefault();
       var cityClick = $(this).attr("value");
+<<<<<<< HEAD
       database.ref().push({
          city: cityClick,
      });
+=======
+
+      database.ref().push({
+         city: cityClick,
+     });
+
+>>>>>>> 022b94aac13f25221405b4a26328d1e74ddb8a91
      });
     
   // snapshot of child_added, we will use these figures for our calculations/data manipulation
@@ -187,6 +203,10 @@
     var newRow = $("<tr>");
     var newSect = $("<td>");
     var newSect2 = $("<td>");
+<<<<<<< HEAD
+=======
+
+>>>>>>> 022b94aac13f25221405b4a26328d1e74ddb8a91
     newRow.append(newSect);
     newRow.append(newSect2)
     newSect.append($("<span>").text(snapshot.val().country))
@@ -230,6 +250,11 @@
     search();
     clearSearch();
    });
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 022b94aac13f25221405b4a26328d1e74ddb8a91
     </script>
 </body>
 </html>
