@@ -19,5 +19,4 @@ function search() {
     alert('Please enter a valid country with no numbers or special characters')
     return
   }
-
-
+}
