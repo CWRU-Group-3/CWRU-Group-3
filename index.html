@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <link rel='stylesheet' type='text/css' href='style-mckenzie.css'>
+    <link rel="stylesheet" type="text/css" href="style.css">
 
     <title>Document</title>
 
@@ -90,6 +91,11 @@
                     </div>
                 </div>
                 <div id="sidebar weather-forecast" class="col-2">
+                        <div id="_weather"></div>
+                        <div id="_clouds"></div>
+                        <div id="_temperature"></div>
+                        <div id="_humidity"></div>
+                        <div id="_wind"></div>
 
                 </div>
             </div>
@@ -127,19 +133,16 @@
         </div>
     </div>
 
-
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simply_valid@3.2.1/main/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simply_valid@3.2.3/simply-valid.min.js"></script>
     <script src="./projectapp.js"></script>
     <script src="country-search.js"></script>
     <script src="youtube.js"></script>
-
+    <script src="project1.js"></script>
+                        
     
-
-            
-        
-                            
-        <script>
+    <script>
         
   // Initialize Firebase
   var config = {
@@ -155,28 +158,41 @@
     // Create a variable to reference the database
     var database = firebase.database();
     var country = "";
-  function dataFire(){
+ function dataFire(){
     event.preventDefault();
       
     var countrySearch = $("#country-input").val().trim();
-    console.log("RRRR" + countrySearch);
     // send new data to firebase
     database.ref().push({
         country: countrySearch,
     });
   };
+    var database = firebase.database();
+    var country = "";
+    $(document).on("click", ".city-button", function(){
+        
+      event.preventDefault();
+      var cityClick = $(this).attr("value");
+      database.ref().push({
+         city: cityClick,
+     });
+     });
     
-    // snapshot of child_added, we will use these figures for our calculations/data manipulation
-    database.ref().on("child_added", function(snapshot){
-      var newCountry = snapshot.val().country
-      console.log("COUNTRY" + newCountry)
-      var newCity = snapshot.val().city
+  // snapshot of child_added, we will use these figures for our calculations/data manipulation
+  database.ref().on("child_added", function(snapshot){
+    var newCountry = snapshot.val().country
+    var newCity = snapshot.val().city
+      
     var newTable = $("<table>").addClass("table")
     var newRow = $("<tr>");
-    newRow.append($("<td>").text(snapshot.val().country))
-    .append($("<td>").text(snapshot.val().city))
-      
-    $("#tbody").append(newRow); 
+    var newSect = $("<td>");
+    var newSect2 = $("<td>");
+    newRow.append(newSect);
+    newRow.append(newSect2)
+    newSect.append($("<span>").text(snapshot.val().country))
+    newSect2.append($("<span>").text(snapshot.val().city))
+    newRow.append(newSect).append(newSect2);
+    $("tbody").append(newRow);  
 })
  var countriesArr = [];
   function search() {
@@ -200,11 +216,6 @@
            var newButton = $("<button>").attr("value", countriesArr[j]).text(countriesArr[j]).addClass("city-button btn-primary");
            $("#button-container").append(newButton);
            } 
-    
-    // if (response.geonames[i].countryName != countrySearch) {
-    //   alert("please type a country")
-    // }
-  
       })
     }
     function clearDiv(){
@@ -219,19 +230,6 @@
     search();
     clearSearch();
    });
-    // var database = firebase.database();
-    // var country = "";
-    $(".button-container").on("click", function(){
-        console.log("clack");
-      // event.preventDefault();
-      //   var cityClick = $(this).attr("value");
-     
-      // console.log("SSSS" + cityClick)
-    //   database.ref().push({
-    //     city: cityClick,
-    // });
-     });
-  
     </script>
 </body>
 </html>
