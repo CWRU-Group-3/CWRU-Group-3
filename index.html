@@ -59,7 +59,7 @@
             <div class='col-md-5'>
                 <!-- Video div -->
 
-                <div class="card">
+                <div class="card video-div">
                     <div class="card-header">
                         Video Tour of City
                     </div>
@@ -87,7 +87,7 @@
                 <!-- Weather Side Bar -->
                 <div id="sidebar weather-forecast" class="col-2">
 
-                    <div class="card" style="width: 18rem;">
+                    <div class="card weather" style="width: 18rem;">
                         <div class="card-header">
                             Weather
                         </div>
@@ -162,6 +162,12 @@
 
     <script>
 
+    function openPage() {
+        $(".weather").hide();
+        $(".video-div").hide();
+    }
+    openPage();
+
         // Initialize Firebase
         var config = {
             apiKey: "AIzaSyCseTcopxbliDR4FkwYeEsDfe3lAiQNSFI",
@@ -217,6 +223,10 @@
         var countriesArr = [];
         function search() {
             clearDiv();
+            $(".weather").show();
+
+            
+
             var countrySearch = $("#country-input").val().trim();
             var queryUrl = "http://api.geonames.org/searchJSON?q=" + countrySearch + "&maxRows=20&cities15000&continentCode=EU&fclName=city&username=ldillon16";
             console.log("QI: " + queryUrl)
@@ -252,6 +262,10 @@
             search();
             clearSearch();
         });
+        $(document).on("click", "#button-container", function() {
+            $(".video-div").show();
+            console.log("cliiiick");
+        })
 
     </script>
 </body>
