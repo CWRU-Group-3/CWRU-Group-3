@@ -45,7 +45,7 @@ $(document).on("click",".city-button", function(){
         var index = -1;
         var arr = response.parse.sections
         for(var i =0; i<arr.length; i++){
-            if(response.parse.sections[i].line=="Tourism"){
+            if(response.parse.sections[i].line=="Monuments and attractions"){
                 
                 index = i+1;
                 console.log("section heading check works")
