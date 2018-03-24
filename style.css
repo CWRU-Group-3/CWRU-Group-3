@@ -7,15 +7,18 @@ h1 {
   border-radius: 3px;
 }
 
-body{
-  background-image: url("background.jpg");
-  
-  
-}
+/*body{
+  background-image: url("https://ec.europa.eu/programmes/creative-europe/sites/creative-europe/files/actions-capitals-culture.png");
+  opacity: 0.3;
+  filter: alpha(opacity=30);
+}*/
 
 
-.container{
+#pic{
+  background-image: url("https://ec.europa.eu/programmes/creative-europe/sites/creative-europe/files/actions-capitals-culture.png")
   background-color: rgba(136, 132, 132, 0.9);
+  opacity: 0.5;
+  filter: alpha(opacity=50);
 }
 
 #title1{
