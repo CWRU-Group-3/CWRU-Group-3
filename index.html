@@ -178,22 +178,18 @@
 
       database.ref().push({
          city: cityClick,
-     });
+      });
 
-     });
+    });
     
   // snapshot of child_added, we will use these figures for our calculations/data manipulation
   database.ref().on("child_added", function(snapshot){
 
     var newRow = $("<tr>");
-    var newSect = $("<td>");
-    var newSect2 = $("<td>");
+    newRow.append($("<td>").text(snapshot.val().country))
+    newRow.append($("<td>").text(snapshot.val().city))
 
-    newSect.append($("<span>").text(snapshot.val().country))
-    newSect2.append($("<span>").text(snapshot.val().city))
-    newRow.append(newSect).append(newSect2);
-
-    $("tbody").append(newRow);  
+    $("#tbody").append(newRow);  
 })
 
  var countriesArr = [];
