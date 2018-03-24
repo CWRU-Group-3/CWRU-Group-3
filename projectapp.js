@@ -12,7 +12,20 @@ var textGrab = function(index,pageid){
     }).then(function(response){
         var newContent = $("<div>")
         newContent.html(response.parse.text["*"])
-        $("#description").append(newContent);
+        $("#description").empty().append(newContent);
+    })
+}
+var picGrab = function(title, pageid){
+    var query = "https://en.wikipedia.org/w/api.php?action=query&titles="+title+"&prop=pageimages";
+    $.ajax({
+        url: query,
+        data: {
+            format: 'json'
+        },
+        dataType: 'jsonp'
+    }).then(function(response){
+        var newImage = $("<img>").attr("src", response.query.pages[pageid].thumbnail.source).attr("style","width: 200px; height: 200px");
+        $("#Matts-div").empty().append(newImage)
     })
 }
 $(document).on("click",".city-button", function(){
@@ -29,7 +42,7 @@ $(document).on("click",".city-button", function(){
     }).done( function ( data ) {
         console.log(data)
         pageid = data.query.search[0].pageid;
-    var query = "https://en.wikipedia.org/w/api.php?action=query&titles="+title+"&prop=pageimages";
+    
     var parse = "https://en.wikipedia.org/w/api.php?action=parse&pageid="+pageid+"&prop=sections"
     
     
@@ -45,7 +58,7 @@ $(document).on("click",".city-button", function(){
         var index = -1;
         var arr = response.parse.sections
         for(var i =0; i<arr.length; i++){
-            if(response.parse.sections[i].line=="Monuments and attractions"){
+            if(response.parse.sections[i].line=="Monuments and attractions" || response.parse.sections[i].line=="Tourism and attractions"){
                 
                 index = i+1;
                 console.log("section heading check works")
@@ -53,8 +66,7 @@ $(document).on("click",".city-button", function(){
         }
         console.log(index)
         textGrab(index,pageid)
-        //var newImage = $("<img>").attr("src", response.query.pages[pageid].thumbnail.source).attr("style","width: 200px; height: 200px");
-        //$("#Matts-div").append(newImage)
+        picGrab(title, pageid)
         
     })
     
