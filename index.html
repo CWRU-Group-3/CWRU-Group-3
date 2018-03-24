@@ -180,33 +180,21 @@
          city: cityClick,
      });
 
-
-      database.ref().push({
-         city: cityClick,
-     });
-
-
      });
     
   // snapshot of child_added, we will use these figures for our calculations/data manipulation
   database.ref().on("child_added", function(snapshot){
-    var newCountry = snapshot.val().country
-    var newCity = snapshot.val().city
-      
-    var newTable = $("<table>").addClass("table")
+
     var newRow = $("<tr>");
     var newSect = $("<td>");
-    var newSect2 = $("<td>");
 
-
-
+    newSect.text(snapshot.val().country)
+    newSect.text(snapshot.val().city)
     newRow.append(newSect);
-    newRow.append(newSect2)
-    newSect.append($("<span>").text(snapshot.val().country))
-    newSect2.append($("<span>").text(snapshot.val().city))
-    newRow.append(newSect).append(newSect2);
+
     $("tbody").append(newRow);  
 })
+
  var countriesArr = [];
   function search() {
     clearDiv();
