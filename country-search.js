@@ -16,7 +16,7 @@ function search() {
   //var validation1 = validate1(countrySearch).isValid;
   //var validation2 = validate2(countrySearch).isValid;
 
-<<<<<<< HEAD
+
   //if (validation1 === false || validation2 === false){
     //alert('Please enter a valid country with no numbers or special characters')
     //return
@@ -56,10 +56,9 @@ function search() {
 }
 function clearDiv() {
   $("#button-container").empty();
-=======
+
   if (validation1 === false || validation2 === false){
     alert('Please enter a valid country with no numbers or special characters')
     return
   }
->>>>>>> 022b94aac13f25221405b4a26328d1e74ddb8a91
-}
+
