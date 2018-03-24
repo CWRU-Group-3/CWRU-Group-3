@@ -19,7 +19,7 @@ var textGrab = function(index,pageid){
             dataType: 'jsonp'
         }).then(function(response){
             var newContent = $("<div>")
-            
+            newContent.addClass("text-edit")
             newContent.text(response.query.pages[pageid].extract)
             
             $("#description").empty().append(newContent);
@@ -38,7 +38,7 @@ var textGrab = function(index,pageid){
         wikitext = deleteText(wikitext, "edit")
         wikitext = deleteText(wikitext, "]")
         newContent.html(wikitext)
-        
+        newContent.addClass("text-edit")
         $("#description").empty().append(newContent);
     })
 }
@@ -56,6 +56,7 @@ var picGrab = function(title, pageid){
         var src = response.query.pages[pageid].thumbnail.source;
         src = src.replace(pixel,"275px")
         var newImage = $("<img>").attr("src", src).attr("alt", src.replace("275px","270px"));
+        newImage.addClass("image-edit")
         $("#Matts-div").empty().append(newImage)
     })
 }
