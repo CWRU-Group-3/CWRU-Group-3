@@ -2,7 +2,24 @@ var APIKey = "&appid=415a66a0a17d32018d6c3cc274b84af9";
 
 //function that will collect the user input and return the weather details
 
+
 $("#search-button").click(function (event) {
+    var searchBox = $("#country-input").val().trim();
+    const validate1 = simplyValid({
+        schema: 'noNumbers'
+        });
+        const validate2 = simplyValid({
+         schema: 'noSpecials'
+        });
+       console.log(validate1)
+        var validation1 = validate1(searchBox).isValid;
+        var validation2 = validate2(searchBox).isValid;
+      
+      
+        if (validation1 === false || validation2 === false){
+            return alert('Please enter a valid country with no numbers or special characters')
+          
+        }
     ////prevent from submiting
     event.preventDefault();
     $("#country-input").empty();
