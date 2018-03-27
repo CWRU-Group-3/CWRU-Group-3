@@ -63,3 +63,7 @@ body{
 .list-group-item{
   background-color:#dbdbf8;
 }
+
+#history {
+	margin-top: 100px;
+}
