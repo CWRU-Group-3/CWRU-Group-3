@@ -1,7 +1,77 @@
-h1 {
+nav {
   text-align: center;
+  width: 900px;
 }
 
 .city-button {
   margin: 10px;
+  border-radius: 3px;
+}
+
+body{
+  background: linear-gradient(to bottom right, ghostwhite, lightgrey);
+  font-family: "raleway";
+}
+
+
+#pic{
+  
+  background-color:rgba(136, 132, 132, 0.9);
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+
+.grey-back{
+  background: #b3b3ff;
+  text-align: center;
+  width: 1500px;
+  text-align: center;
+  height: 100px;
+  box-shadow: 4px 3px 2px darkblue;
+  border-radius: 4px;
+
+}
+
+#title1 {
+	text-align: center;
+	font-weight: bold;
+	color: white;
+	text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+	font-size: 300%;
+
+}
+.country-input {
+	background: ghostwhite;
+	box-shadow: 4px 3px 2px grey;
+}
+
+#search-button {
+	background: linear-gradient(#b3fff0, #00cca3); 
+	border-color: #b3fff0;
+	box-shadow: 4px 3px 2px grey;
+}
+
+.city-button {
+	background: #3333ff;
+	border-color: #0000b3;
+	color: ghostwhite;
+	box-shadow: 2px 2px 1px grey;
+	text-shadow: 1px 1px 2px black, 0 0 25px lightgray, 0 0 5px darkblue;
+}
+.card-header{
+  background: ghostwhite;
+}
+.card{
+  background-color:#ececf9;
+  
+}
+.list-group-item{
+  background-color:#dbdbf8;
+}
+
+#history {
+	margin-top: 100px;
+	color: #009973;
+	text-shadow: 2px 2px 1px ghostwhite;
+
 }

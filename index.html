@@ -18,6 +18,10 @@
 <body>
     <div class="container">
 
+<!--     <div class="row">
+        <div class="col-md-8" id="pic"></div>
+    </div> -->
+
 
 
         <!-- for video pop up -->
@@ -31,105 +35,128 @@
         <!-- ************** -->
 
 
-        
-        <div class="row">
+    <div class="row">
+        <div class="col-md-12 grey-back">
 
-            <div class="col-lg-10">
-                <h1> Explore Europe! </h1>
-            </div>
+        <nav class="navbar navbar-light" id = "title">
+            <span class="navbar-brand  h1" id = "title1">Explore the Cities of Europe</span>
+        </nav>
+
         </div>
+    </div>
 
 
+        <div class='row'>
 
-        <div class="row">
-            <div class="col-lg-10">
+            <div class='col-md-4'>
+                <!-- Search Div with buttons -->
+                <form id="input-form">
+                    <label id="text-box" form="topic-input"></label>
+                    <h4> Enter a country in Europe to explore cities</h4>
+                    <br>
+                    <input type="text" id="country-input" onfocus="this.value=''">
+                    <br>
 
-                    <form id="input-form">
-                            <label id="text-box" form="topic-input">Country Search</label>
-                            <input type="text" id="country-input" onfocus="this.value=''" placeholder="Search for a European Country"><br>
-                       
-                            <!-- Button triggers new buttons to appear -->
-                              <input id="search-button" class="btn btn-primary new-button" type="button" value="Search">
-                          </form>
-                       
-                        <div id="button-container"></div>
-
+                    <!-- Button triggers new buttons to appear -->
+                    <br>
+                    <input id="search-button" class="btn btn-primary new-button" type="button" value="Search">
+                </form>
+                <br>
+                <div id="button-container"></div>
             </div>
-        <div class="row">
-            <div class="col-lg-10">
-                <div class="row">
-                    <div class="col">
-                        <div id="description"></div>
 
-            
-            <div class="row">
-                <div class="col-10">
-                    <div class="row">
-                        <div class="col-12">
-                            
-                            <div class="row">
-                                <div class="col-6" id="Matts-div">
-                                    <h2> Picture of the City</h2>
 
-                                </div>
-                                <div class="col-6">
-                                    <h2> Video tour of City</h2>
-                                    <div id="mckenzies-div">
+            <div class='col-md-5'>
+                
+                <br>
+                <!-- Video div -->
 
-                                        <div id="output"></div>
-                                        <div class="overlayBg"></div>
-                                        <div class="popup">
-                                            
-                                        </div>
-                                    </div>
+                <div class="card video-div">
+                    <div class="card-header">
+                        Video Tour of City
+                    </div>
+                    <div class="card-body">
+                        <div id="mckenzies-div">
 
-                                </div>
+                            <div id="output"></div>
+                            <div class="overlayBg"></div>
+                            <div class="popup">
+
+
                             </div>
                         </div>
                     </div>
                 </div>
-                <div id="sidebar weather-forecast" class="col-2">
-                        <div id="_weather"></div>
-                        <div id="_clouds"></div>
-                        <div id="_temperature"></div>
-                        <div id="_humidity"></div>
-                        <div id="_wind"></div>
+            </div>
+
+            <div class='col-md-3' id="weather">
+                <br>
+                <!-- Weather Side Bar -->
+                <div id="sidebar weather-forecast">
+
+                    <div class="card" >
+                        <div class="card-header">
+                            Weather
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item" id="_weather"></li>
+                            <li class="list-group-item" id="_clouds"></li>
+                            <li class="list-group-item" id="_temperature"></li>
+                            <li class="list-group-item" id="_humidity"></li>
+                            <li class="list-group-item" id="_wind"></li>
+                        </ul>
+                    </div>
+
 
                 </div>
             </div>
+
         </div>
 
-        <div class="row">
-            <div id="searches" class="col"></div>
-        </div>
-    </div>
-        <div class="container">
-        <div class="row">
-            <div class="col-lg-10">
-                 <div class="panel">
-            <div class="panel-heading">
-              <h3 class="panel-title"><strong>Search History</strong></h3>
-            </div>
-            <div class="panel-body">
-              <table class="table table-hover" id='search-table'>
-                <thead>
-                  <tr>
-                    <th>Country</th>
-                    <th></th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tr>
-                  <tbody id="tbody"></tbody>
-                </tr>
-              </table>
+
+        <div class='row'>
+            <div class='col-md-12'>
+                <!-- Wikipedia Information Div -->
+                <div class="col-6" id="Matts-div"></div>
+                <div id="description"></div>
             </div>
         </div>
-    </div>                                   
-<div class="row">
-            <div id="searches" class="col"></div>
+
+
+        <div class='row'>
+            <div class='col-md-12'>
+                <!-- Search History Div -->
+                <div class="panel" id="history">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <strong>Search History</strong>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-hover" id='search-table'>
+                            <thead>
+                                <tr>
+                                    <th>Country</th>
+                                    <th>City</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tr>
+                                <tbody id="tbody"></tbody>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+
+
+
+
+
+
 
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -138,110 +165,116 @@
     <script src="country-search.js"></script>
     <script src="youtube.js"></script>
     <script src="project1.js"></script>
-                        
-    
+
+
     <script>
-        
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCseTcopxbliDR4FkwYeEsDfe3lAiQNSFI",
-    authDomain: "project1-a3685.firebaseapp.com",
-    databaseURL: "https://project1-a3685.firebaseio.com",
-    projectId: "project1-a3685",
-    storageBucket: "project1-a3685.appspot.com",
-    messagingSenderId: "72500934397"
-  };
-  firebase.initializeApp(config);
-  
-    // Create a variable to reference the database
-    var database = firebase.database();
-    var country = "";
 
- function dataFire(){
-    event.preventDefault();
-      
-    var countrySearch = $("#country-input").val().trim();
-
-    // send new data to firebase
-    database.ref().push({
-        country: countrySearch,
-    });
-  };
-    var database = firebase.database();
-    var country = "";
-    $(document).on("click", ".city-button", function(){
-        
-      event.preventDefault();
-      var cityClick = $(this).attr("value");
-
-      database.ref().push({
-         city: cityClick,
-     });
-
-
-      database.ref().push({
-         city: cityClick,
-     });
-
-
-     });
-    
-  // snapshot of child_added, we will use these figures for our calculations/data manipulation
-  database.ref().on("child_added", function(snapshot){
-    var newCountry = snapshot.val().country
-    var newCity = snapshot.val().city
-      
-    var newTable = $("<table>").addClass("table")
-    var newRow = $("<tr>");
-    var newSect = $("<td>");
-    var newSect2 = $("<td>");
-
-
-
-    newRow.append(newSect);
-    newRow.append(newSect2)
-    newSect.append($("<span>").text(snapshot.val().country))
-    newSect2.append($("<span>").text(snapshot.val().city))
-    newRow.append(newSect).append(newSect2);
-    $("tbody").append(newRow);  
-})
- var countriesArr = [];
-  function search() {
-    clearDiv();
-    var countrySearch = $("#country-input").val().trim();
-    var queryUrl = "http://api.geonames.org/searchJSON?q=" + countrySearch + "&maxRows=20&cities15000&continentCode=EU&fclName=city&username=ldillon16";
-    console.log("QI: " + queryUrl)
-     $.ajax({
-      url: queryUrl,
-      method: "GET"
-    }).then(function(response) {
-       console.log(response.geonames)
-        for (i=0; i<response.geonames.length; i++) {
-          var name = response.geonames[i].name;
-          console.log("CITY NAME " + name)
-          if ((response.geonames[i].fclName === "city, village,...") 
-           && (response.geonames[i].countryName = countrySearch)) {
-            countriesArr.push(name)
-            console.log("CA" + countriesArr) } }
-           for (j=0; j<3; j++) {
-           var newButton = $("<button>").attr("value", countriesArr[j]).text(countriesArr[j]).addClass("city-button btn-primary");
-           $("#button-container").append(newButton);
-           } 
-      })
+    function openPage() {
+        $("#weather").hide();
+        $(".video-div").hide();
     }
-    function clearDiv(){
-      $("#button-container").empty();
-    }
-    function clearSearch(){
-      $("#country-input").empty();
-      countriesArr = [];
-    }
-   $(document).on("click", "#search-button", function(){
-    dataFire();
-    search();
-    clearSearch();
-   });
+    openPage();
+
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCseTcopxbliDR4FkwYeEsDfe3lAiQNSFI",
+            authDomain: "project1-a3685.firebaseapp.com",
+            databaseURL: "https://project1-a3685.firebaseio.com",
+            projectId: "project1-a3685",
+            storageBucket: "project1-a3685.appspot.com",
+            messagingSenderId: "72500934397"
+        };
+        firebase.initializeApp(config);
+
+        // Create a variable to reference the database
+        var database = firebase.database();
+        var country = "";
+
+        function dataFire() {
+            event.preventDefault();
+
+            var countrySearch = $("#country-input").val().trim();
+
+            // send new data to firebase
+            database.ref().push({
+                country: countrySearch,
+            });
+        };
+        var database = firebase.database();
+        var country = "";
+        $(document).on("click", ".city-button", function () {
+
+            event.preventDefault();
+            var cityClick = $(this).attr("value");
+
+            database.ref().push({
+                city: cityClick,
+            });
+
+        });
+
+        // snapshot of child_added, we will use these figures for our calculations/data manipulation
+        database.ref().on("child_added", function (snapshot) {
+
+            var newRow = $("<tr>");
+            var newSect = $("<td>");
+            var newSect2 = $("<td>");
+
+            newSect.append($("<span>").text(snapshot.val().country))
+            newSect2.append($("<span>").text(snapshot.val().city))
+            newRow.append(newSect).append(newSect2);
+
+            $("#tbody").append(newRow);
+        })
+
+        var countriesArr = [];
+        function search() {
+            clearDiv();
+            $("#weather").show();
+
+            
+
+            var countrySearch = $("#country-input").val().trim();
+            var queryUrl = "http://api.geonames.org/searchJSON?q=" + countrySearch + "&maxRows=20&cities15000&continentCode=EU&fclName=city&username=ldillon16";
+            console.log("QI: " + queryUrl)
+            $.ajax({
+                url: queryUrl,
+                method: "GET"
+            }).then(function (response) {
+                console.log(response.geonames)
+                for (i = 0; i < response.geonames.length; i++) {
+                    var name = response.geonames[i].name;
+                    console.log("CITY NAME " + name)
+                    if ((response.geonames[i].fclName === "city, village,...")
+                        && (response.geonames[i].countryName = countrySearch)) {
+                        countriesArr.push(name)
+                        console.log("CA" + countriesArr)
+                    }
+                }
+                for (j = 0; j < 3; j++) {
+                    var newButton = $("<button>").attr("value", countriesArr[j]).text(countriesArr[j]).addClass("city-button btn-primary");
+                    $("#button-container").append(newButton);
+                }
+            })
+        }
+        function clearDiv() {
+            $("#button-container").empty();
+        }
+        function clearSearch() {
+            $("#country-input").empty();
+            countriesArr = [];
+        }
+        $(document).on("click", "#search-button", function () {
+            dataFire();
+            search();
+            clearSearch();
+        });
+        $(document).on("click", "#button-container", function() {
+            $(".video-div").show();
+            console.log("cliiiick");
+        })
 
     </script>
 </body>
+
 </html>
