@@ -74,7 +74,7 @@ var getIndex = function(response){
     }
     for(var i=0; i<arr.length; i++){
         var head = response.parse.sections[i].line
-        if(head=="Culture"|| head=="Landmarks"){
+        if(head=="Landmarks"){
             index = i+1;
             return index;
         }
